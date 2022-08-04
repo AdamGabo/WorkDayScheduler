@@ -82,14 +82,13 @@ SetItems();
 //save button function commits changes to local storage 
 $('.saveBtn').on('click', function () {
 
-    var value = $(this).siblings(".input-class").val(); 
+    var value = $(this).siblings(".description").val(); 
     var time = $(this).parent().attr('id'); 
     console.log(time); 
     console.log(value); 
 
-    localStorage.setItem(time,value); 
-    
-    
+    if (value)
+        localStorage.setItem(time,value); 
     }); 
 
 
