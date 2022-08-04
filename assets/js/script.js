@@ -44,11 +44,19 @@ function backGroundColourChanger()
     $('.time-block').each(function () {
 
         //get just the number 
-        var eventHour = $(this).attr('id').replace(/\D/g, "");
+        var eventHour = parseInt($(this).attr('id').replace(/\D/g, ""));
+        console.log(eventHour); 
 
+        //convert to 24hr clock
+        if (eventHour < 8)
+        {
+             eventHour += 12;    
+        }
         //change the classes of the text containers to reflect the current hour
         if (eventHour < currentHour)
+        {
         $(this).addClass('past'); 
+        }
         else if (eventHour === currentHour) {
             $(this).removeClass('past'); 
             $(this).addClass('present');
