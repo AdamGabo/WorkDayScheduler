@@ -19,8 +19,8 @@ A Workday Scheduler on the Web.
 * MOMENT.JS
 
 ## Website-Details
-* Please use the following link to navigate to the deployed website:https://adamgabo.github.io/QuizTimer/
-* GitHub Link: https://github.com/AdamGabo/QuizTimer
+* Please use the following link to navigate to the deployed website:https://adamgabo.github.io/WorkDayScheduler/
+* GitHub Link: https://github.com/AdamGabo/WorkDayScheduler
 * Webpage Preview: ![Alt text](./assets/images/Capture.PNG?raw=true "Webpage Preview")
 
 ## Maintainer
