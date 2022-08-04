@@ -3,35 +3,37 @@ var currentHour = moment().hours();
 console.log(currentHour); 
 var currentDate = moment().format("dddd MMMM Do, YYYY"); 
 $("#currentDay").text(currentDate); 
+
 //create an array for the hours in a business day 
 var businessHours = ["9AM", "10AM", "11AM", "12PM", "1PM", "2PM", "3PM", "4PM", "5PM"]
+
 //implement some containers for each hour of the day
 for (var i = 0; i < 9; i++)
 {
 var content = $('<div>', {
     id: "event-container-" + businessHours[i],
-    class: 'event-container-class',
+    class: 'row time-block',
     title: 'Event-Container'
 }).appendTo('.container');
 }
+
 //add the hour of the day 
 for (var j = 0; j < 9; j++)
 {
-
-var eventText = $("<p>")
- .addClass("timestamp")
+var eventText = $("<div>")
+ .addClass("col-md-1 hour")
  .text(businessHours[j]);
  eventText.appendTo("#event-container-" + businessHours[j]); 
 
  //add input box for event content
  var content = $('<textarea>', {
     id: "input-" + businessHours[j],
-    class: 'input-class',
+    class: 'col-md-10 description',
 }).appendTo("#event-container-" + businessHours[j]);
 
 //add button
- var abtn = $("<button>")
- .addClass("saveBtn");
+ var abtn = $("<button><i>")
+ .addClass("btn saveBtn col-md-1");
  abtn.appendTo("#event-container-" + businessHours[j]); 
  
 }
@@ -39,7 +41,7 @@ var eventText = $("<p>")
 function backGroundColourChanger()
 {
     //loop through the business hours array 
-    $('.event-container-class').each(function () {
+    $('.time-block').each(function () {
 
         //get just the number 
         var eventHour = $(this).attr('id').replace(/\D/g, "");
@@ -52,7 +54,7 @@ function backGroundColourChanger()
             $(this).addClass('present');
         }
         else {
-            $(this).removeClass('future'); 
+            $(this).removeClass('present'); 
             $(this).removeClass('past'); 
             $(this).addClass('future');
         }
@@ -60,11 +62,7 @@ function backGroundColourChanger()
     })
 }
 
-
-//var interval = setInterval(UpdateItems,15000);
-
-
-
+//set items from local storage
 var SetItems = function (){
 
     for (var q = 0; q < businessHours.length; q++)
@@ -77,12 +75,11 @@ var SetItems = function (){
     }
 }
 
+//run the commands 
 backGroundColourChanger(); 
 SetItems(); 
 
-
-
-//function that grabs the local Storage data and appends the items to the appropriate containers
+//save button function commits changes to local storage 
 $('.saveBtn').on('click', function () {
 
     var value = $(this).siblings(".input-class").val(); 
@@ -94,7 +91,6 @@ $('.saveBtn').on('click', function () {
     
     
     }); 
-//function reads the local storage on startup and populated the values into the webpage 
 
 
 
